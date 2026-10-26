@@ -8,8 +8,6 @@
 * practices decisions and one of the four loops.
 */
 
-using System.Net.Sockets;
-
 int choice = 0;
 Random rng = new Random(4000);
 
@@ -134,7 +132,42 @@ choice = 0;
     if (choice == 3 || choice == 4)
     {
         System.Console.WriteLine("=== Exercise 3: The Score Report ===");
-        //for exercise 3
+        
+        int[] scores = new int[5];
+
+        for(int i = 0; i < scores.Length; i++) //for loop lets us enter in each score and labels it 1-5
+        {
+            System.Console.Write("Score " + (i + 1) + ": ");
+            scores[i] = Convert.ToInt32(Console.ReadLine());
+        }
+
+        int totals = 0;
+        int highest = scores[0];
+        int passing = 0;
+
+        foreach(int score in scores) //foor each takes the grades and finds out the asked questions below it.
+        {
+            totals = totals + score;
+
+            if(score > highest)
+            {
+                highest = score;
+            }
+
+            if(score >= 60)
+            {
+                passing++;
+            }
+        }
+
+        double average = totals / scores.Length;
+
+        System.Console.WriteLine(" ");
+        System.Console.WriteLine("Score entered: " + scores.Length);
+        System.Console.WriteLine("Total: " + totals);
+        System.Console.WriteLine("Average: " + average);
+        System.Console.WriteLine("Highest: " + highest);
+        System.Console.WriteLine("Passing: " + passing + " of " + scores.Length);
         System.Console.WriteLine(" ");
     }
 
