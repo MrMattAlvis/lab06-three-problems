@@ -12,6 +12,8 @@ int choice = 0;
 
 do
 {
+choice = 0;
+
     System.Console.WriteLine("=== CSCI 1250 Lab 06 ===");
     System.Console.WriteLine("1. The Grade Checker");
     System.Console.WriteLine("2. The Dice Table");
@@ -33,11 +35,49 @@ do
         }
     }
 
+    System.Console.WriteLine(" ");
+
     if (choice == 1 || choice == 4)
     {
         System.Console.WriteLine("=== Exercise 1: The Grade Checker ===");
-        //For exercise 1
+        System.Console.Write("Score: ");
+        int score = Convert.ToInt32(Console.ReadLine());
+
+        while(score <= 0 || score >= 100)
+        {
+            System.Console.WriteLine("A score must be between 0 and 100.");
+
+            System.Console.Write("Score: ");
+            score = Convert.ToInt32(Console.ReadLine());
+        }
+
+        if(score >= 90)
+        {
+            System.Console.WriteLine(score + " earns a A");
+        }
+
+        else if(score >= 80)
+        {
+            System.Console.WriteLine(score + " earns a B");
+        }
+
+        else if(score >= 70)
+        {
+            System.Console.WriteLine(score + " earns a C");
+        }
+
+        else if(score >= 60)
+        {
+            System.Console.WriteLine(score + " earns a D");
+        }
+
+        else
+        {
+            System.Console.WriteLine(score + " earns a F");
+        }
     }
+
+    System.Console.WriteLine(" ");
 
     if (choice == 2 || choice == 4)
     {
@@ -45,12 +85,21 @@ do
         //For exersice 2
     }
 
+    System.Console.WriteLine(" ");
+
     if (choice == 3 || choice == 4)
     {
         System.Console.WriteLine("=== Exercise 3: The Score Report ===");
         //for exercise 3
     }
 
+    System.Console.WriteLine(" ");
+
 } while (choice != 5);
 
-Console.WriteLine("Goodbye");
+Console.WriteLine("Goodbye.");
+return;
+//Can you let me know what it is imdoing wrong when oit comes to the .gitignore
+//I think im doing it right but when i do my first commit they are still their.
+
+// Sorry for being a bit late with this, I wil; Make sure this wont happen again
