@@ -145,7 +145,7 @@ choice = 0;
         int highest = scores[0];
         int passing = 0;
 
-        foreach(int score in scores) //foor each takes the grades and finds out the asked questions below it.
+        foreach(int score in scores) //for each takes the grades and finds out the asked questions below it.
         {
             totals = totals + score;
 
@@ -160,12 +160,12 @@ choice = 0;
             }
         }
 
-        double average = totals / scores.Length;
+        double average = (double)totals / scores.Length;
 
         System.Console.WriteLine(" ");
         System.Console.WriteLine("Score entered: " + scores.Length);
         System.Console.WriteLine("Total: " + totals);
-        System.Console.WriteLine("Average: " + average);
+        System.Console.WriteLine("Average: " + average.ToString("F1")); //fixed the .6 thing
         System.Console.WriteLine("Highest: " + highest);
         System.Console.WriteLine("Passing: " + passing + " of " + scores.Length);
         System.Console.WriteLine(" ");
@@ -180,3 +180,5 @@ return;
 
 // Sorry for being a bit late with this, I wil; Make sure this wont happen again
 //also just want to put i think i alread did the final commit because it repeats already and end whenyou hit 5. will do touching up and verifying it works properly for a 5th commit
+
+//again sorry for being a bit behind stayed up most of the night looking through notes. If i can improve on anything please let me know 
