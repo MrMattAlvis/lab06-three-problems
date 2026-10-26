@@ -8,7 +8,10 @@
 * practices decisions and one of the four loops.
 */
 
+using System.Net.Sockets;
+
 int choice = 0;
+Random rng = new Random(4000);
 
 do
 {
@@ -39,11 +42,11 @@ choice = 0;
 
     if (choice == 1 || choice == 4)
     {
-        System.Console.WriteLine("=== Exercise 1: The Grade Checker ===");
+        System.Console.WriteLine("=== Exercise 1: The Grade Checker ==="); // didnt really notate this coming back to put notes
         System.Console.Write("Score: ");
         int score = Convert.ToInt32(Console.ReadLine());
 
-        while(score <= 0 || score >= 100)
+        while(score <= 0 || score >= 101)
         {
             System.Console.WriteLine("A score must be between 0 and 100.");
 
@@ -51,7 +54,7 @@ choice = 0;
             score = Convert.ToInt32(Console.ReadLine());
         }
 
-        if(score >= 90)
+        if(score >= 90) //putting in order from A - F  so youdont get an F at 87%
         {
             System.Console.WriteLine(score + " earns a A");
         }
@@ -75,25 +78,65 @@ choice = 0;
         {
             System.Console.WriteLine(score + " earns a F");
         }
-    }
 
-    System.Console.WriteLine(" ");
+        System.Console.WriteLine(" ");
+    }
 
     if (choice == 2 || choice == 4)
     {
         System.Console.WriteLine("=== Exercise 2: The Dice Table ===");
-        //For exersice 2
-    }
 
-    System.Console.WriteLine(" ");
+
+        //This setts the default roold and wins to 0 each time you start the exercise
+        int rolls = 0;
+        int wins = 0;
+        string again;
+
+        do
+        {
+            int die1 = rng.Next(1, 7); //rolling each die 1-6
+            int die2 = rng.Next(1, 7);
+            int total = die1 + die2; //the adding them together
+
+            rolls++; //adds a roll each time so i can labe what roll we are on
+
+            System.Console.Write("Roll " + rolls +": " + die1 + " and " + die2 + ", total " + total);
+
+            if(die1 == 1 && die2 ==1)
+            {
+                System.Console.WriteLine(" Snake eyes."); //checks what you rolled and tells you if you get snake eyes...
+            }
+
+            else if(die1 == die2)
+            {
+                System.Console.WriteLine(" Doubles!"); // get double die...
+            }
+
+            else if(total == 7 || total == 11)
+            {
+                System.Console.WriteLine(" A winner."); // or win with a 7 or an 11.
+                wins++;
+            }
+            else
+            {
+                System.Console.WriteLine(" "); //doesn't break the code. for some reason un known to me, I forgot this part and ".write" line above this as ".WriteLine".
+            }                                  //Program was able to run although not how you wanted printed out. changing it to write make it not run at all till i added this else part.
+
+            System.Console.Write("Roll again? (y/n) : ");
+            again = Console.ReadLine() ?? "n"; //ends the exercise if you hit n
+
+        }while(again == "y"); //rolls again if you hit y
+
+        System.Console.WriteLine("You rolled " + rolls + " times and won " + wins + ".");
+        System.Console.WriteLine(" ");
+    }
 
     if (choice == 3 || choice == 4)
     {
         System.Console.WriteLine("=== Exercise 3: The Score Report ===");
         //for exercise 3
+        System.Console.WriteLine(" ");
     }
-
-    System.Console.WriteLine(" ");
 
 } while (choice != 5);
 
@@ -103,3 +146,4 @@ return;
 //I think im doing it right but when i do my first commit they are still their.
 
 // Sorry for being a bit late with this, I wil; Make sure this wont happen again
+//also just want to put i think i alread did the final commit because it repeats already and end whenyou hit 5. will do touching up and verifying it works properly for a 5th commit
